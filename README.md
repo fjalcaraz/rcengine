@@ -8,7 +8,7 @@ RCEngine is an implementation of the RETE algorithm form Charles Forgy, defined 
 RCEngine is a production rule compiler (forward chaining rule engine). It is a library able to load a Package of rules, compile them in a suitable way, and accept from that moment a flow of external events (objects created, modified or deleted) that will be correlated according to the rules. As a result of the propagation of each object, some rules may be ready to be triggered. This is what is called the Conflict Set. One rule is then selected and executed what occasionally will generate additional events that will be propagated in the net (chained).
 
 ## What are the main advantages of the use of RCEngine
-The most important feature is it incredible performance. 
+The most important feature is its incredible performance. 
 
 The bottleneck of RETE algorithm is the management of the memories in the "inter" nodes. In these nodes the objects arrive to them by the left or right sides. When a new object arrives, the node conditions are tested between it and each the objects that arrived in the past to the other side. The objects are stored in "memories", one for each side, to allow them to wait for the objects to come by the other side. This way of working, as defined by C. Forgy, is affected by an important reduction of performance as the number of objects increase.
 
