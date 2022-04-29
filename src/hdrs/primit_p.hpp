@@ -60,7 +60,7 @@ PRIVATE void strtofloat_call(Value *stack, int tag);
 PRIVATE void floattostr_call(Value *stack, int tag);
 PRIVATE void numtofloat_call(Value *stack, int tag);
 PRIVATE void floattonum_call(Value *stack, int tag);
-PRIVATE void destroy_set(Value *stack, int tag);
+PRIVATE void empty_set(Value *stack, int tag);
 PRIVATE void printf_call(Value *stack, int tag);
 PRIVATE void sprintf_call(Value *stack, int tag);
 PRIVATE void fprintf_call(Value *stack, int tag);

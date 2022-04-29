@@ -79,7 +79,7 @@ def_primitives()
     def_arg(TYPE_FLO);
     def_func_type(TYPE_NUM);
 
-   def_func(strdup("destroy_set"));
+   def_func(strdup("empty_set"));
     def_arg(TYPE_PATTERN);
     def_arg(TYPE_NUM);
     def_func_type(TYPE_VOID);

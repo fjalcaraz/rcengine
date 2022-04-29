@@ -127,7 +127,7 @@ void load_primitives()
   def_function("sprintf", sprintf_call);
   def_function("printf", printf_call);
   def_function("fprintf", fprintf_call);
-  def_function("destroy_set", destroy_set);
+  def_function("empty_set", empty_set);
 
   primit_loaded = TRUE;
 }
@@ -445,7 +445,7 @@ void floattonum_call(Value *stack, int /*tag*/)
  * @param stack Data stack with the BTState of the set at [0]
  */
 PRIVATE
-void destroy_set(Value *stack, int /*tag*/)
+void empty_set(Value *stack, int /*tag*/)
 {
   eng_destroy_set((BTState *)stack[0].num);
 }

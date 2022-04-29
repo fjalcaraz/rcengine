@@ -334,6 +334,9 @@ In the same way it has been introduced with CREATE, MODIFY or DELETE the call wi
         CALL ON INSERT notify(u, t);
     }
 
+##### Built-in procedures
+**empty_set**(set pattern attribute) generate a retraction for all the objects in the set
+
 ## API
 
 Extern code must include *engine.h*
