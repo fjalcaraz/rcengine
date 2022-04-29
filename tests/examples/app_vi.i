@@ -1,0 +1,8 @@
+1 a(co 1 id 1)
+1 c(co 1 id 2)
+1 c(co 1 id 3)
+1 b(co 1 id 4)
+1 b(co 1 id 5)
+1 c(co 1 id 6)
+1 b(co 1 id 7)
+1 a(co 1 id 8)

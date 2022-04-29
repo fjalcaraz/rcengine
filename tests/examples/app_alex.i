@@ -1,0 +1,7 @@
+0 genera(nllamadas 300, tiempo 0, delta 180)
+0 genera(nllamadas 300, tiempo 180, delta 180)
+0 genera(nllamadas 300, tiempo 360, delta 180)
+0 genera(nllamadas 300, tiempo 540, delta 180)
+0 genera(nllamadas 300, tiempo 720, delta 180)
+0 genera(nllamadas 300, tiempo 900, delta 180)
+0 genera(nllamadas 300, tiempo 1080, delta 180)

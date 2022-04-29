@@ -1,0 +1,6 @@
+0 negador(dato xx, dato2 1)
+1 obj1(dato xx, dato2 1)
+1 obj2(dato xx)
+10 obj2(dato xx)
+1 obj1(dato xx, dato2 2)
+1 finn()

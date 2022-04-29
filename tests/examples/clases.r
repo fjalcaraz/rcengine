@@ -1,0 +1,19 @@
+PACKAGE fff
+
+ABSTRACT CLASS A 
+{
+}
+
+CLASS B IS_A A
+{
+}
+
+CLASS C IS_A A
+{
+}
+
+CLASS D IS_A C
+{
+}
+
+END

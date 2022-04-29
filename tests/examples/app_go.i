@@ -1,0 +1,6 @@
+1 b(re 1, id 1)
+2 b(re 1, id 2)
+3 a(re 1, id 1)
+4 a(re 1, id 2)
+5 c(re 1, id 1)
+6 c(re 1, id 2)

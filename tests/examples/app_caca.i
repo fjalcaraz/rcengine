@@ -1,0 +1,6 @@
+0 cat(id 1, umbral 10)
+0 ll(id 1)
+0 ll(id 1)
+0 ll(id 1)
+0 ll(id 1)
+0 v(umbral 3)

@@ -1,0 +1,5 @@
+1 a(re 1, id 1)
+2 a(re 1, id 2)
+2 a(re 1, id 2)
+2 a(re 1, id 2)
+3 a(re 2, id 3)

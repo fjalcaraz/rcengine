@@ -1,0 +1,5 @@
+1 a(id 1, s1 "hola", s2 "juan")
+2 a(id 2, s1 "hola", s2 "juan")
+2 a(id 3, s1 "hola", s2 "juan")
+3 a(id 4, s1 "adios", s2 "pepe")
+3 a(id 5, s1 "adios", s2 "pepe")

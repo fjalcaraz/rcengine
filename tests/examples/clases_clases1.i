@@ -1,0 +1,5 @@
+0 hija1(atribhija11 1)
+0 hija2(atribmadre2 UNACADENA)
+0 hija1(atribhija11 232)
+0 hija1(atribmadre1 323)
+0 hija2(atribmadre2 SOY_PRIMA_3)

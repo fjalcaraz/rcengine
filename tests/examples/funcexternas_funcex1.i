@@ -1,0 +1,5 @@
+0 a(atrib 1)
+0 a(atrib 2)
+0 a(atrib 3)
+0 a(atrib 4)
+0 a(atrib 5)

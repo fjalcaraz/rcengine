@@ -1,0 +1,13 @@
+1 al(id 1,tipo 1)
+1 al(id 2,tipo 1)
+1 al(id 3,tipo 2)
+1 al(id 4,tipo 2)
+1 al(id 5,tipo 3)
+1 al(id 6,tipo 3)
+1 al(id 6,tipo 1)
+1 al(id 7,tipo 1)
+1 al(id 8,tipo 2)
+1 al(id 9,tipo 2)
+1 al(id 10,tipo 3)
+1 al(id 11,tipo 3)
+

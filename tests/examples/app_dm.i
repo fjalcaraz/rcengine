@@ -1,0 +1,6 @@
+0 e(st 0, clv zar)
+0 f()
+;0 e(st 0, clv zar)
+;1 e(st 0, clv zar)
+;1 e(st 0, clv zar)
+;1 e(st 0, clv zar)

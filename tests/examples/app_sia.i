@@ -1,0 +1,7 @@
+1 a(re 1, id 1,ruta 0)
+1 a(re 3, id 1,ruta 1)
+1 a(re 3, id 1,ruta 2)
+1 a(re 2, id 1,ruta 3)
+1 a(re 2, id 1,ruta 4)
+1 a(re 3, id 1,ruta 5)
+1 a(re 2, id 1,ruta 6)
