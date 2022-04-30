@@ -1,23 +1,23 @@
 # RCENGINE a Fast Rule Compiler Engine
 
-RCEngine is a personal development, mainly done between 1995 and 1998, that was an important piece in some advanced projects in the field of AI at that time. Now it has been modernized and taken to the present because I believe it is still important to be known and I hope you will also find interesting and finally decide to use it.
+RCEngine is a personal development, mainly done between 1995 and 1998, that was an important piece in some advanced projects in the field of AI at that time. Now it has been modernized and taken to the present because I believe it is still something important to be known and I hope you will find it useful and finally decide to use it.
 
-RCEngine is an implementation of the RETE algorithm form Charles Forgy, defined in his famous article *"A Fast Algorithm for the Many Pattern/Many Object Pattern Match Problem"* (In: Artificial Intelligence, vol. 19, pp. 17–37, 1982.), that transforms the rules conditions in a network of nodes that act as filters for the objects. This initial algorithm has being widely extended in RCEngine to cover many other usual needs, as the management of sets, object implications (abstraction), negative and optional patterns, and the use of the time as an quite important variable in the object matching (timed rules).
+RCEngine is an implementation of the RETE algorithm form Charles Forgy, defined in his famous article *"A Fast Algorithm for the Many Pattern/Many Object Pattern Match Problem"* (In: Artificial Intelligence, vol. 19, pp. 17–37, 1982.), that transforms the rules conditions in a network of nodes that act as filters for the objects. This initial algorithm has being widely extended in RCEngine to cover many other usual needs, as the management of sets, object implications (abstraction), negative and optional patterns, and the use of the time as a quite important variable in the object matching (timed rules).
 
 ## What is RCEngine
-RCEngine is a production rule compiler (forward chaining rule engine). It is a library able to load a Package of rules, compile them in a suitable way, and accept from that moment a flow of external events (objects created, modified or deleted) that will be correlated according to the rules. As a result of the propagation of each object, some rules may be ready to be triggered. This is what is called the Conflict Set. One rule is then selected and executed what occasionally will generate additional events that will be propagated in the net (chained).
+RCEngine is a production rules compiler (forward chaining rules engine). It is a library able to load a Package of rules, compile them in a suitable way, and accept from that moment a flow of external events (objects created, modified or deleted) that will be correlated according to the rules. As a result of the propagation of each object, some rules may be ready to be triggered. This is what is called the Conflict Set. One rule is then selected and executed what occasionally will generate additional events that will be propagated in the net (chained).
 
 ## What are the main advantages of the use of RCEngine
 The most important feature is its incredible performance. 
 
-The bottleneck of RETE algorithm is the management of the memories in the "inter" nodes. In these nodes the objects arrive to them by the left or right sides. When a new object arrives, the node conditions are tested between it and each the objects that arrived in the past to the other side. The objects are stored in "memories", one for each side, to allow them to wait for the objects to come by the other side. This way of working, as defined by C. Forgy, is affected by an important reduction of performance as the number of objects increase.
+The bottleneck of RETE algorithm is the management of the memories in the "inter" nodes. In these nodes the objects arrive to them by the left or right sides. When a new object arrives, the node conditions are tested between it and each of the objects that arrived in the past to the other side. To this possible the objects are stored in "memories", one for each side, to wait there for the objects to come by the other side. This way of working, as defined by C. Forgy, is affected by an important reduction of performance as the number of objects increase.
 
-To reduce this effect, the memories in RCEngine has been implemented with B-Trees, technology used in Data Bases that minimize the lost of performance. The B-Trees maintain the objects sorted by the attribute values that are used in the node conditions, and they can be multilevel when the conditions are expressed as an AND logical expression (concatenation of conditions).
+To reduce this effect, the memories in RCEngine has been implemented with B-Trees, technology used in databases that minimize the lost of performance. The B-Trees maintain the objects sorted by the attribute values that are used in the node conditions, and they can be multilevel when the conditions are expressed as an AND logical expression (concatenation of conditions).
 
 Also the time and how it is used in the rules and classes is an odd feature that simplify the time based restrictions. Very often the happening of events inside some time-window is an additional condition for the correlation.
 
 ## Language Definition
-RCEngine expect to receive a **Package** what follows the next structure:
+RCEngine expects to receive a **Package** following the next structure:
 
     PACKAGE --name-of-package--
     --declarations--
@@ -37,21 +37,21 @@ We will describe the syntax of all these declarations but let us begin by Rulese
         ....
     END
 
-RCEngine is able to load only a Package, but it can load several files with additional Rulesets. The Rulesets may be contained all of then in the Package file or they can be structured in separated files.
+RCEngine is able to load only a Package, and all its RuleSets may be declared within the Package file or they can be in separated files that will have to be loaded individually.
 
 > Every Ruleset and the Package may be also unloaded what will free all the related allocated memory.
 
 > Although in the examples the keywords are written in capitals, the language keywords are case insensitive.
 
 ### Classes Declarations
-A normal class of objects is declared simply with the keyword **CLASS**, followed by its name and by a set of attributes (name followed by its type after a colon symbol):
+A normal class of objects is declared simply with the keyword **CLASS**, followed by its name and by a set of attributes (its name followed by the type after a colon symbol):
 
     CLASS --class-name-- {
         --attr-name-- : --type--
         --attr-name-- : --type--
     }
 
-The class name and the attribute names must be simple identifiers. The types of the attributes have to be one of:
+The class name and the attribute names are simple identifiers. The types of the attributes have to be one of:
 - INTEGER
 - FLOAT
 - CHAR
@@ -60,7 +60,7 @@ The class name and the attribute names must be simple identifiers. The types of 
 - OBJECT
 
 ### Class Types
-RCEngine supports inheritance among classes so:
+RCEngine supports **inheritance** among classes so:
 - A class may be declared as a *Subclass* of another using the keyword **IS_A** after its class name and followed by the superclass name. This means that the first inherits all the attributes of the last.
 
     ```
@@ -77,7 +77,7 @@ RCEngine supports inheritance among classes so:
     }
     ```
 
-- Finally a class can be declared as a *Restriction* of another. A Restriction does not change the class name in the instances but, they are restricted by the values of some attributes (e.g. class PhoneCall and LocalPCalls that restricts that due LocalPCalls are those PhoneCalls with no international prefix). A restricted class is defined using the keyword **RESTRICTS**. The value restrictions are expressed in a very similar way as in the rules: simple value constants or variables (simple identifiers) may be used, if a variable appears more than once it will mean equality among them, and it is possible to declare as value restriction a variable and then after a slash ('/') put an expression that the variable must satisfy (e.g. attr = a / a>0 & a<5). We'll see more deeply the expressions below.
+- Finally a class can be declared as a *Restriction* of another. A Restriction does not change the class name in the instances but, they are restricted by the values of some attributes (e.g. class PhoneCall and LocalPCalls that restricts the first, due LocalPCalls are those PhoneCalls with no international prefix). A restricted class is defined using the keyword **RESTRICTS**. The value restrictions are expressed in a very similar way as in the rules: the symbol equal (=) followed by a simple value constant or a variable (simple identifiers). If a variable appears more than once it means equality among them. It is possible to set a variable and then after a slash ('/' that must be read as "such that") put an expression that the variable must satisfy (e.g. attr = a / a>0 & a<5). We'll see more deeply the expressions below.
 
     ```
     CLASS --subclass-name-- RESTRICTS --superclass-name-- { 
@@ -88,7 +88,9 @@ RCEngine supports inheritance among classes so:
 Any class, independently of its type may be use in the rule patterns. Every abstract class must have at least a non-abstract subclass, to be used.
 
 ### Class Timing Behavior
-It is possible to define a timing behavior related to two different aspects: the storage in the system and the correlation. Related to the storage, a class can be **TRIGGER**, **TEMPORAL** or **PERMANENT**.
+It is possible to define a timing behavior related to two different aspects: the storage in the system and the correlation. 
+
+Related to the storage, a class can be **TRIGGER**, **TEMPORAL** or **PERMANENT**.
 - TRIGGER behavior means that the objects of this class won't be stored in the side memories of the inter nodes. They will try matches with the objects of the other side, but cause it won't be stored, it won't make additional matches with objects of the other side to come in the future.
 - TEMPORAL means that he objects must be retracted, removed from the memories, when their timestamps are older than current time minus the rule time window. A Class is TEMPORAL when only the instances inside a time window frame are important.
 - PERMANENT is the normal behavior, the objects are stored in the memories an they will be in the system until they are retracted, by a rule or externally.
@@ -97,7 +99,7 @@ Related to the correlation (matching), the class can be **TIMED** or **UNTIMED**
 - TIMED is the usual behavior in timed rules, all the objects that verify the rule patterns at the left-hand-side (LHS) of the rule must be inside a certain time window frame defined in the rule. If the rule is not TIMED the matching does not consider the time, even in the class has been defined as TIMED.
 - UNTIMED class are those whose instances are not going to be checked if they are inside or not the time window frame defined in the timed rules, and where the rest of the TIMED objects must be. UNTIMED objects represent timeless states.
 
-PERMANENT and TIMED are usually not declared as they are the defaults
+PERMANENT and TIMED are usually not declared as they are the default behaviors.
 
 The timing behaviors are put just before the keyword CLASS at the class declaration.
 
