@@ -202,18 +202,20 @@ Three types of patterns are supported by RCEngine:
     [classB(other_attr = x)]
     ```
 
-Also, the patterns may be *simple* or *set*. A Set pattern is able to join together all the objects that made matching. The Set patterns is written between curly brackets and will be verified with at least one object. If we want to verify the set pattern even with 0 objects in it we can combine Optional and Set characteristics.
+Also, the patterns may be **Simple** or **Set**. 
+
+A Set pattern is able to join together all the objects that made matching. The Set patterns is written between curly brackets and will be verified with at least one object. If we want to verify the set pattern even with 0 objects in it we can combine Optional and Set characteristics.
 
     classA(attr1 3, attr2 x)
     [{classB(other_attr = x)}]
 
 ### Expressions
-As we have already seen the expressions allow us to manage complex matchings. In a expression we can use simple values, variables, operators and functions (built-in primitives or external)
+As we have already seen, the expressions allow us to manage complex matchings. In a expression we can use simple values, variables, operators and functions (built-in primitives or external)
 The operators are:
 - Numerical: +, -, *, /, and - (unary minus)
-- Logical: &, |, or ! (unary not)
+- Logical: |, &, or ! (unary not)
 - Comparison: <, <=, >, >=, =, !=
-- Parenthesis: (...)
+- Parenthesis: (...) to alter the precedence of the operators
 
 ### Primitives
 There are several primitive functions defined, that can be used in the expressions.
