@@ -50,7 +50,7 @@
 
 PRIVATE void append_call(Value *stack, int tag);
 PRIVATE void head_call(Value *stack, int tag);
-PRIVATE void except_call(Value *stack, int tag);
+PRIVATE void butlast_call(Value *stack, int tag);
 PRIVATE void tail_call(Value *stack, int tag);
 PRIVATE void substr_call(Value *stack, int tag);
 PRIVATE void length_call(Value *stack, int tag);

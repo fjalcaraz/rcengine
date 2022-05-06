@@ -87,6 +87,8 @@
 #define WHEN_EVENTS (WHEN_INSERTED | WHEN_MODIFIED | WHEN_RETRACTED)
 #define WHEN_ALL (WHEN_INSERTED | WHEN_MODIFIED | WHEN_RETRACTED | WHEN_NOT_USED)
 
+#define WITH_UTF8
+
 typedef unsigned long ULong;
 typedef unsigned int UInt;
 typedef unsigned char UChar;

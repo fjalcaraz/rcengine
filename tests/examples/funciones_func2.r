@@ -24,6 +24,13 @@ RULE uno NORMAL
   a(atr1 floattostr(X))
   CALL printf("Valor de b(x): %s\n",floattostr(X))
   CALL printf("Valor de b(x) entero: %d\n",floattonum(X))
+  CALL printf("%s, LEN=%d, HEAD(2)=%s, BUTLAST(2)=%s TAIL(2)=%s SUBSTR(2,3)=%s\n", 
+        "áéíóúÑÀ", 
+        length("áéíóúÑÀ"),
+        head("áéíóúÑÀ", 2),
+        butlast("áéíóúÑÀ", 2),
+        tail("áéíóúÑÀ", 2),
+        substr("áéíóúÑÀ", 2, 3))
 }
 
 RULE dos NORMAL

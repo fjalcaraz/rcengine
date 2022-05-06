@@ -12,6 +12,10 @@
 #include "config.hpp"
 #include "primit_p.hpp"
 
+#ifdef WITH_UTF8
+#include "utf8str.hpp"
+#endif
+
 #define ZEROPAD 1  /* pad with zero */
 #define SIGN 2     /* unsigned/signed long */
 #define PLUS 4     /* show plus */
@@ -114,7 +118,7 @@ void load_primitives()
 
   def_function("append", append_call);
   def_function("head", head_call);
-  def_function("except", except_call);
+  def_function("butlast", butlast_call);
   def_function("tail", tail_call);
   def_function("substr", substr_call);
   def_function("length", length_call);
@@ -181,6 +185,8 @@ void head_call(Value *stack, int /*tag*/)
   if (stack[0].str.str_p == NULL)
     return;
 
+#ifndef WITH_UTF8
+
   len = strlen(stack[0].str.str_p);
 
   if (len < stack[1].num)
@@ -192,6 +198,12 @@ void head_call(Value *stack, int /*tag*/)
   strncpy(str, stack[0].str.str_p, stack[1].num);
   str[stack[1].num] = '\0';
 
+#else
+
+  utf8str wstr(stack[0].str.str_p);
+  str = wstr.substr(1, stack[1].num);
+
+#endif
   if (stack[0].str.dynamic_flags == DYNAMIC)
     free(stack[0].str.str_p);
 
@@ -205,7 +217,7 @@ void head_call(Value *stack, int /*tag*/)
  * @param stack Data stack with the string at [0] and the length at [1]
  */
 PRIVATE
-void except_call(Value *stack, int /*tag*/)
+void butlast_call(Value *stack, int /*tag*/)
 {
   char *str;
   unsigned int len;
@@ -213,16 +225,27 @@ void except_call(Value *stack, int /*tag*/)
   if (stack[0].str.str_p == NULL)
     return;
 
+#ifndef WITH_UTF8
+
   len = strlen(stack[0].str.str_p);
 
   if (len < stack[1].num)
-  {
     stack[1].num = len;
-  }
 
   str = (char *)malloc(len - (unsigned int)(stack[1].num) + 1);
   strcpy(str, stack[0].str.str_p + stack[1].num);
 
+#else
+
+  utf8str wstr(stack[0].str.str_p);
+  len = wstr.length();
+
+  if (len < stack[1].num)
+    stack[1].num = len;
+
+  str = wstr.substr(1, len - stack[1].num);
+
+#endif
   if (stack[0].str.dynamic_flags == DYNAMIC)
     free(stack[0].str.str_p);
 
@@ -244,15 +267,27 @@ void tail_call(Value *stack, int /*tag*/)
   if (stack[0].str.str_p == NULL)
     return;
 
+#ifndef WITH_UTF8
+
   len = strlen(stack[0].str.str_p);
 
   if (len < stack[1].num)
-  {
     stack[1].num = len;
-  }
 
   str = (char *)malloc((unsigned int)(stack[1].num) + 1);
   strcpy(str, stack[0].str.str_p + len - stack[1].num);
+
+#else
+
+  utf8str wstr(stack[0].str.str_p);
+  len = wstr.length();
+
+  if (len < stack[1].num)
+    stack[1].num = len;
+
+  str = wstr.substr(len - stack[1].num + 1, -1);
+
+#endif
 
   if (stack[0].str.dynamic_flags == DYNAMIC)
     free(stack[0].str.str_p);
@@ -275,6 +310,8 @@ void substr_call(Value *stack, int /*tag*/)
 
   if (stack[0].str.str_p == NULL)
     return;
+
+#ifndef WITH_UTF8
 
   len = strlen(stack[0].str.str_p);
 
@@ -300,6 +337,13 @@ void substr_call(Value *stack, int /*tag*/)
           (int)(stack[2].num - stack[1].num),
           stack[0].str.str_p + stack[1].num);
 
+#else
+
+  utf8str wstr(stack[0].str.str_p);
+  str = wstr.substr(stack[1].num, stack[2].num);
+
+#endif
+
   if (stack[0].str.dynamic_flags == DYNAMIC)
     free(stack[0].str.str_p);
 
@@ -323,8 +367,16 @@ void length_call(Value *stack, int /*tag*/)
     return;
   }
 
+#ifndef WITH_UTF8
+
   len = strlen(stack[0].str.str_p);
 
+#else
+
+  utf8str wstr(stack[0].str.str_p);
+  len = wstr.length();
+
+#endif
   if (stack[0].str.dynamic_flags == DYNAMIC)
     free(stack[0].str.str_p);
 

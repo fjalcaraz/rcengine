@@ -40,7 +40,7 @@ def_primitives()
     def_arg(TYPE_NUM);
     def_func_type(TYPE_STR);
 
-   def_func(strdup("except"));
+   def_func(strdup("butlast"));
     def_arg(TYPE_STR);
     def_arg(TYPE_NUM);
     def_func_type(TYPE_STR);

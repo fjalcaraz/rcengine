@@ -23,6 +23,7 @@ librcengine_la_SOURCES = \
     set.cpp        \
     single.cpp     \
     strlow.cpp     \
+    utf8str.cpp    \
     btree.cpp      \
     keys.cpp       \
     vars.cpp
