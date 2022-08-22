@@ -10,9 +10,9 @@ RCEngine is a production rules compiler (forward chaining rules engine). It is a
 ## What are the main advantages of the use of RCEngine
 The most important feature is its incredible performance. 
 
-The bottleneck of RETE algorithm is the management of the memories in the "inter" nodes. In these nodes the objects arrive to them by the left or right sides. When a new object arrives, the node conditions are tested between it and each of the objects that arrived in the past to the other side. To this possible the objects are stored in "memories", one for each side, to wait there for the objects to come by the other side. This way of working, as defined by C. Forgy, is affected by an important reduction of performance as the number of objects increase.
+The bottleneck of RETE algorithm is the management of the memories in the "inter" nodes. In these nodes, the objects arrive to them by the left or right sides. When a new object arrives to a node by some side, the node conditions are tested between it and each of the objects that arrived in the past to the other side. To make this possible the objects are stored in "memories", one for each side, where the objects will wait for other objects to come by the other side. This way of working, as defined by C. Forgy, is affected by a gradual reduction of performance as the number of objects increase.
 
-To reduce this effect, the memories in RCEngine has been implemented with B-Trees, technology used in databases that minimize the lost of performance. The B-Trees maintain the objects sorted by the attribute values that are used in the node conditions, and they can be multilevel when the conditions are expressed as an AND logical expression (concatenation of conditions).
+To reduce this effect, the memories in RCEngine have been implemented using B-Trees, technology used in databases that minimize the lost of performance. The B-Trees maintain the objects sorted by the attribute values that are used in the node conditions, and they can be multilevel when the conditions are expressed as an AND logical expression (concatenation of conditions).
 
 Also the time and how it is used in the rules and classes is an odd feature that simplify the time based restrictions. Very often the happening of events inside some time-window is an additional condition for the correlation.
 
@@ -49,6 +49,7 @@ A normal class of objects is declared simply with the keyword **CLASS**, followe
     CLASS --class-name-- {
         --attr-name-- : --type--
         --attr-name-- : --type--
+        --...--
     }
 
 The class name and the attribute names are simple identifiers. The types of the attributes have to be one of:
