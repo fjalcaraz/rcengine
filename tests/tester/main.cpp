@@ -34,6 +34,12 @@ void *class_of(char *name, int &n_attrs)
 {
   int n;
   void *cr;
+
+  if (!name) {
+    fprintf(stderr, "ERROR: null classname found\n");
+    exit(1);
+  }
+
   cr=get_class(name,&n_attrs);
 
   if (cr==NULL)
@@ -88,7 +94,6 @@ read_obj(FILE *file)
    curr_time += tiempo;
 
    classname = strtok(NULL, " (\n");
-
    clase = class_of(classname, n_attrs);
 
    obj= new_object(n_attrs-1, curr_time);
