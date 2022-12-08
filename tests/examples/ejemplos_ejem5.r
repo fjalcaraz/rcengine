@@ -24,7 +24,7 @@ RULE uno NORMAL TIMED 3
    conj: { oa:al(tipo X) / oa.id > 0 }
 ->
    meta(tipo X)
-   CALL ON RETRACT destroy_set(conj,1)
+   CALL ON RETRACT empty_set(conj,1)
 }
 
 END

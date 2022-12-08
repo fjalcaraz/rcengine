@@ -34,7 +34,7 @@ RULE B NORMAL TIMED 20
 ->
   al:al(contador count(ll), miga m, secuencia BD_Damesecuencia(al.secuencia, "SEC_ALARMA"), tipo cat.tipo)
   CALL ON RETRACT printf("VAMOS, ATRAS ATRAS....\n")
-  CALL ON RETRACT destroy_set(ll, 1)
+  CALL ON RETRACT empty_set(ll, 1)
 }
 
 ;RULE C NORMAL TIMED 120
